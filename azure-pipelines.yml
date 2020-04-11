@@ -17,7 +17,7 @@ variables:
 steps:
 - task: UseDoNet@2
   displayName: 'Use .NET Core SDK 3.1.100'
-  input:
+  inputs:
     packageType:  sdk
     version:  3.1.100
 
