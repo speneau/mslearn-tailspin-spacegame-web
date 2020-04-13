@@ -2,7 +2,7 @@ parameters:
   buildConfiguration: 'Release'
 
 steps:
-  - task: DoNetCoreCLI@2
+  - task: DotNetCoreCLI@2
     displayName:  'Build the Project - ${{parameters.buildConfiguration}}'
     inputs:
       command: 'build'
@@ -15,4 +15,3 @@ steps:
       command: 'publish'
       arguments:  '--no-restore --configuration ${{parameters.buildConfiguration}} --output $(Build.ArtefactStagingDirectory)/${{parameters.buildConfiguration}}'
       zipAfterPublish:  true
-      
