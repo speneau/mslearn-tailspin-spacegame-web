@@ -1,0 +1,18 @@
+parameters:
+  buildConfiguration: 'Release'
+
+steps:
+  - task: DoNetCoreCLI@2
+    displayName:  'Build the Project - ${{parameters.buildConfiguration}}'
+    inputs:
+      command: 'build'
+      arguments:  '--no-restore --configuration ${parameters.buildConfiguration}}'
+      projects: '**/*.crsproj'
+
+  - task: DotNetCoreCLI@2
+    displayName: 'Publish the Project - ${{parameters.buildConfiguration}}'
+    inputs:
+      command: 'publish'
+      arguments:  '--no-restore --configuration ${{parameters.buildConfiguration}} --output $(Build.ArtefactStagingDirectory)/${{parameters.buildConfiguration}}'
+      zipAfterPublish:  true
+      
