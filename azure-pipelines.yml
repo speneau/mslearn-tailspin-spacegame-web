@@ -1,5 +1,11 @@
 trigger:
-- '*'
+  branches:
+    include:
+      - '*' # Build All branches
+  paths:
+    exclude:
+      - docs/* # Exclude the docs folder
+
 
 pool:
   vmImage: 'ubuntu-16.04'
